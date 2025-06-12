@@ -1,2 +1,2 @@
 #!/bin/bash
-$(printf "%s/action" "echo $PATH | tr ':' '\t') | tr -s ' ' | tr ' ' ':' 
+export PATH="$PATH:/action"
