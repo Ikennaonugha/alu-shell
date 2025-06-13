@@ -5,20 +5,14 @@
 #display minutes from 1 to 59
 
 hour=0
-minute=1
-
-echo "Hour: 0"
-while ((hour <= 12 ))
+while ((hour <= 12 ));
 do 
-	while ((minute <= 60 ))
+	echo "Hour: $hour"
+	minute=1
+	while ((minute <= 59 ));
 	do
-		if (( minute == 60)); then
-			((hour++))
-			echo "Hour: $hour"
-			minute=1
-		else 
-			echo "$minute"
-			((minute++))
-		fi
+		echo "$minute"
+		((minute++))
 	done
+	((hour++))
 done
