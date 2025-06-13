@@ -2,9 +2,9 @@
 #This script prints 'Hi' on the 9th iteration
 count=0
 word=''
-while ((count < 10 ))
+while ((count < 11 ))
 do
-	if (( count == 8)); then
+	if (( count == 9)); then
 		word='Hi'
 		echo $word
 		((count++))
