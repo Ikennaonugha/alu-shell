@@ -9,11 +9,11 @@ count=0
 word=''
 while ((count < 10 ))
 do
-	if ((count == 4)); then
+	if ((count == 3)); then
 		word='bad luck'
 		echo "$word"
 		((count++))
-	elif ((count == 8)); then
+	elif ((count == 7)); then
 		word='good luck'
 		echo "$word"
 		((count++))
