@@ -6,11 +6,11 @@ while ((count < 11 ))
 do
 	if (( count == 9)); then
 		word='Hi'
-		echo $word
+		echo "$word"
 		((count++))
 	else
 		word='Best School'
-		echo $word
+		echo "$word"
 		((count++))
 	fi
 done
