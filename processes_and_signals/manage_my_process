@@ -1,0 +1,11 @@
+#!/bin/bash
+# a sccript 
+LOG_FILE="/tmp/my_process"
+
+touch "$LOG_FILE"
+
+while true; do
+    echo "I am alive!" >> "$LOG_FILE"
+    sleep 2
+done
+

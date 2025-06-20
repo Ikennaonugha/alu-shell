@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#a bash script that displays its own process ID
+
+# $$ holds the PID if the current shell
+echo "$$"

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#displays 'infinity and beyond' indefinitly with a period of 2 seconds inbetween
+
+counter=0
+while ((counter < 1 ))
+do
+	echo "To infinity and beyond"
+	sleep 2 
+done

@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# a script 
+
+PROCESS_NAME="manage_my_process"
+PID_FILE="/var/run/my_process.pid"
+DAEMON_SCRIPT="./$PROCESS_NAME"
+
+start_process() {
+    if [ ! -x "$DAEMON_SCRIPT" ]; then
+        exit 1
+    fi
+
+    nohup "$DAEMON_SCRIPT" > /dev/null 2>&1 &
+    
+    DAEMON_PID=$!
+
+    echo "$DAEMON_PID" > "$PID_FILE"
+    
+    if [  ! $? -eq 0 ]; then
+        kill "$DAEMON_PID" > /dev/null 2>&1
+        exit 1
+    fi
+}
+
+stop_process() {
+    if [ ! -f "$PID_FILE" ]; then
+        return 1
+    fi
+
+    PID_TO_KILL=$(cat "$PID_FILE" 2>/dev/null)
+
+    if ! pgrep -f -x "$PROCESS_NAME" | grep -q "$PID_TO_KILL"; then
+        rm -f "$PID_FILE"
+        return 1
+    fi
+    
+    kill "$PID_TO_KILL"
+
+    sleep 1
+
+    if ! ps -p "$PID_TO_KILL" > /dev/null; then
+        rm -f "$PID_FILE"
+        return 0
+    else
+        return 1
+    fi
+}
+
+restart_process() {
+    stop_process
+    start_process
+    echo "$PROCESS_NAME restarted"
+}
+
+case "$1" in
+    start)
+        start_process
+        ;;
+    stop)
+        stop_process
+        ;;
+    restart)
+        restart_process
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
+

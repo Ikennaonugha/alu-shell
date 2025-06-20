@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# a script that outputs 'i am invincible !!!' when terminated using kill or pkill
+
+output() {
+	echo "I am invincible!!!"
+}
+
+trap 'output' SIGTERM
+
+while true;
+do
+	echo "To infinity and beyond"
+	sleep 2
+done

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# a script the displays all processes in full format long with the hierarchy (tree format)
+
+ps -efh

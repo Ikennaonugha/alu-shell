@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# a script that displays the PId of bash process without using bash
+# shellcheck disable=SC2009
+
+ps -efh | grep "bash"
